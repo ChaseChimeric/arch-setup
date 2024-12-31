@@ -1,0 +1,7 @@
+#!/bin/bash
+pacman -S git
+git clone https://github.com/ChaseChimeric/arch-setup
+cd arch-setup
+chmod +x startscript
+chmod +x afterstartscript
+./startscript
