@@ -1,0 +1,64 @@
+# initial time/locale
+ln -sf /usr/share/zoneinfo/America/Phoenix /etc/localtime && hwclock --systohc
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+#basic system setup
+HOSTNAME="archlinuxSystem"
+echo "enter hostname (system name)"
+read HOSTNAME
+if [ "$HOSTNAME" = "" ]; then HOSTNAME="archSystem" & echo "Using default hostname"; fi
+echo "$HOSTNAME" > /etc/hostname
+echo "Set root password: "
+passwd
+groupadd netdev
+groupadd sudo
+echo "%sudo ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudog
+#user info
+echo "CREATING USER"
+echo "Username: "
+read UNAME
+if [ "$HOSTNAME" = "" ]; then HOSTNAME="archSystem" & echo "Using default hostname"; fi
+useradd -m -G sudo,netdev,wheel -s /bin/bash $UNAME
+echo "Enter Password for $UNAME: "
+passwd $UNAME
+# get intel or amd
+UCODE="$(lscpu | grep "Model name:.*Intel")"
+if [ "$UCODE" ]; then UCODE="intel-ucode"; else UCODE="amd-ucode"; fi
+#install all needed packages for basic operation
+pacman -Syu vim expac jq openssh meson fakechroot gtest $UCODE iwd git python python-pip nano man-db man-pages texinfo go grub efibootmgr base-devel --needed
+systemctl enable iwd
+systemctl enable systemd-resolved
+echo "[General]" > /etc/iwd/main.conf
+echo "EnableNetworkConfiguration=true" >> /etc/iwd/main.conf
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+#END
+#MUST BE RUN AFTER FIRST BOOT
+#add other os det stuff here too
+# py de 
+#curl https://raw.githubusercontent.com/ChaseChimeric/arch-setup/refs/heads/main/de.py > /tmp/de.py && python /tmp/de.py
+
+#User specific stuff now
+#UNAME="chasechimeric"
+#echo "makepkg -si && exit" > /tmp/makepkg
+#chmod +x /tmp/makepkg
+#chown /tmp/makepkg $UNAME:$UNAME 
+#echo "You may need to enter your user's password multiple times now"
+#cd /home/$UNAME
+#su -c "git clone https://aur.archlinux.org/yay.git" $UNAME
+#cd yay
+#su -c "/tmp/makepkg" $UNAME
+#cd ..
+#su -c "rm -rf yay" $UNAME
+
+#su -c "git clone https://aur.archlinux.org/auracle-git.git" $UNAME
+#cd auracle-git
+#su -c "/tmp/makepkg" $UNAME
+#cd ..
+#su -c "rm -rf auracle-git" $UNAME
+
+#su -c "git clone https://aur.archlinux.org/pacaur.git" $UNAME
+#cd pacaur
+#su -c "/tmp/makepkg" $UNAME
+#cd ..
+#su -c "rm -rf pacaur" $UNAME
