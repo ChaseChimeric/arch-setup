@@ -56,7 +56,7 @@ def sway():
 
 
 confirm = input("install Desktop Environment? (y/n) ")
-if confirm:
+if confirm == "y":
     #prompt de
     print("1:\tCOSMIC\tgnome like, easiest")
     print("2:\txfce4\tlighter full de, also easy")
