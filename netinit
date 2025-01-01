@@ -4,5 +4,4 @@ git clone https://github.com/ChaseChimeric/arch-setup
 cd arch-setup
 chmod +x startscript
 chmod +x afterstartscript
-bash ./startscript
-echo "now 'exit' and 'reboot'"
+echo "now run './startscript'"
