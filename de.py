@@ -5,6 +5,7 @@
 """
 import os
 import sys
+import time
 #environ stuff
 args = sys.argv
 UNAME=args[1]
@@ -13,7 +14,7 @@ UNAME=args[1]
 def LightDM():
     # ldm has 2 options for the greeter, but base install is simple through pacman
     print("1:\tdefault\tExtremely basic gtk based greeter")
-    print("2:\tAether\tnicer looking, uses webkit")
+    print("2:\tAether\tNicer looking, uses webkit")
     ldm = ""
     while not ldm.isnumeric() or int(ldm) < 1 or int(ldm) > 2:
         print("select greeter: ",end="")
@@ -32,22 +33,26 @@ def Ly():
 
 def cosmic():
     # simple group install
-    print("installing COSMIC by System76...")
+    print("\x1b[38;5;214minstalling COSMIC by System76...")
+    time.sleep(2)
     os.system("pacman -S cosmic --noconfirm")
     
 def xfce():
     # also pretty easy, doesn't install xorg for some reason
-    print("installing XFCE4 from Xubuntu...")
+    print("\x1b[38;5;214minstalling XFCE4 from Xubuntu...")
+    time.sleep(2)
     os.system(f'pacman -S xorg xorg-xwayland xfce4 xfce4-goodies --noconfirm')
 def i3():
     # same here xorg isn't initially required for some reason, also installs basic stuff to run programs
-    print('installing i3...')
+    print('\x1b[38;5;214minstalling i3...')
+    time.sleep(2)
     os.system(f'pacman -S xorg i3 alacritty dmenu --noconfirm')
 def sway():
     # y this so hard, probably installs the most stuff--personal configs included
-    print('installing SwayFX...')
+    print('\x1b[38;5;214minstalling SwayFX...')
+    time.sleep(2)
     os.system(f'su --session-command="yay -S swayfx --answerclean NotInstalled --answerdiff None" {UNAME}')
-    os.system(f'pacman -S otf-firamono-nerd fuzzel foot xorg xorg-xwayland --noconfirm')
+    os.system(f'pacman -S  fuzzel foot xorg xorg-xwayland --noconfirm')
     os.system(f'su --session-command="cp configs/sway/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/waybar/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/foot/ -r /home/{UNAME}/.config/" {UNAME}')
@@ -89,7 +94,7 @@ if confirm == "y":
             sway()
         case default:
             exit()
-    os.system("pacman -S firefox --noconfirm")
+    os.system("pacman -S firefox otf-firamono-nerd --noconfirm")
 else:
     exit()
 

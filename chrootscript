@@ -34,33 +34,8 @@ echo "EnableNetworkConfiguration=true" >> /etc/iwd/main.conf
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
+cd ..
+mv arch-setup /home/$UNAME/
+chown -R $UNAME /home/$UNAME/arch-setup
 #END
-#MUST BE RUN AFTER FIRST BOOT
-#add other os det stuff here too
-# py de 
-#curl https://raw.githubusercontent.com/ChaseChimeric/arch-setup/refs/heads/main/de.py > /tmp/de.py && python /tmp/de.py
-
-#User specific stuff now
-#UNAME="chasechimeric"
-#echo "makepkg -si && exit" > /tmp/makepkg
-#chmod +x /tmp/makepkg
-#chown /tmp/makepkg $UNAME:$UNAME 
-#echo "You may need to enter your user's password multiple times now"
-#cd /home/$UNAME
-#su -c "git clone https://aur.archlinux.org/yay.git" $UNAME
-#cd yay
-#su -c "/tmp/makepkg" $UNAME
-#cd ..
-#su -c "rm -rf yay" $UNAME
-
-#su -c "git clone https://aur.archlinux.org/auracle-git.git" $UNAME
-#cd auracle-git
-#su -c "/tmp/makepkg" $UNAME
-#cd ..
-#su -c "rm -rf auracle-git" $UNAME
-
-#su -c "git clone https://aur.archlinux.org/pacaur.git" $UNAME
-#cd pacaur
-#su -c "/tmp/makepkg" $UNAME
-#cd ..
-#su -c "rm -rf pacaur" $UNAME
+#

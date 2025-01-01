@@ -1,8 +1,7 @@
 #!/bin/bash
 pacman -S --noconfirm git
-cd /home
 git clone https://github.com/ChaseChimeric/arch-setup
 cd arch-setup
 chmod +x startscript
 chmod +x afterstartscript
-echo -e "\x1b[38;5;214mnow cd into arch-setup and run ./startscript\x1b[0m"
+echo -e "\x1b[38;5;214mnow cd into /arch-setup and run ./startscript\x1b[0m"
