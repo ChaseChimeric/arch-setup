@@ -25,7 +25,7 @@ passwd $UNAME
 UCODE="$(lscpu | grep "Model name:.*Intel")"
 if [ "$UCODE" ]; then UCODE="intel-ucode"; else UCODE="amd-ucode"; fi
 #install all needed packages for basic operation
-pacman -Syu --noconfirm vim expac jq openssh meson fakechroot gtest $UCODE iwd git python python-pip nano man-db man-pages texinfo go grub efibootmgr base-devel --needed
+pacman -Syu --noconfirm vim devtools expac jq openssh meson fakechroot gtest $UCODE iwd git python python-pip nano man-db man-pages texinfo go grub efibootmgr base-devel --needed
 systemctl enable iwd
 systemctl enable systemd-resolved
 mkdir /etc/iwd
