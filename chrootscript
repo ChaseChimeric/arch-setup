@@ -37,5 +37,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 cd ..
 mv arch-setup /home/$UNAME/
 chown -R $UNAME /home/$UNAME/arch-setup
+echo -e "\x1b[38;5;214mnow 'exit', 'reboot' and then run /home/<user>/arch-setup/firstboot\x1b[0m"
 #END
 #
