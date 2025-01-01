@@ -69,6 +69,8 @@ def i3():
 def sway():
     print('installing SwayFX...')
     os.system(f'su --session-command="yay -S swayfx --answerclean NotInstalled --answerdiff None" {UNAME}')
+    os.system(f'pacman -S otf-firamono-nerd fuzzel foot --noconfirm')
     os.system(f'su --session-command="cp configs/sway/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/waybar/ -r /home/{UNAME}/.config/" {UNAME}')
+    os.system(f'su --session-command="cp configs/foot/ -r /home/{UNAME}/.config/" {UNAME}')
 
