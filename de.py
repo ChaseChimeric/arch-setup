@@ -63,7 +63,7 @@ def sway():
     print('\x1b[38;5;214minstalling SwayFX...\x1b[0m')
     time.sleep(2)
     os.system(f'su --session-command="yay -S swayfx --answerclean NotInstalled --answerdiff None" {UNAME}')
-    os.system(f'pacman -S  fuzzel foot xorg xorg-xwayland --noconfirm')
+    os.system(f'pacman -S  fuzzel foot xorg xorg-xwayland waybar --noconfirm')
     os.system(f'su --session-command="cp configs/sway/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/waybar/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/foot/ -r /home/{UNAME}/.config/" {UNAME}')

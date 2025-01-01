@@ -2,7 +2,7 @@ font pango:FiraMono Nerd Font Regular 10
 
 # change/uncomment below for background
 #output "*" bg /home/chasechimeric/Pictures/wallpapers/windows-11-dark-mode-abstract-background-black-background-3840x2400-8710.jpg fill
-outputncomment this for bg >>  eDP-1 scale 1.75 mode 2256x1504
+#eDP-1 scale 1.75 mode 2256x1504
 gaps inner 1
 gaps outer 1
 
