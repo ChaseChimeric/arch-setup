@@ -7,5 +7,5 @@ if [ "$(pacman -Q | grep pacaur)" = "" ]; then git clone https://aur.archlinux.o
 
 if [ "$(pacman -Q | grep yay)" = "" ]; then pacaur -S --noedit --noconfirm yay; fi
 
-python3 de.py
+sudo python3 de.py $USER
 
