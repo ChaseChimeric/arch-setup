@@ -1,5 +1,6 @@
 #!/bin/bash
 pacman -S --noconfirm git
+cd /home
 git clone https://github.com/ChaseChimeric/arch-setup
 cd arch-setup
 chmod +x startscript
