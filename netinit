@@ -4,4 +4,4 @@ git clone https://github.com/ChaseChimeric/arch-setup
 cd arch-setup
 chmod +x startscript
 chmod +x afterstartscript
-echo "now cd into arch-setup and run ./startscript"
+echo "\x1b[38;5;214mnow cd into arch-setup and run ./startscript\x1b[0m"
