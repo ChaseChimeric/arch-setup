@@ -25,6 +25,17 @@ def LightDM():
     else:
         os.system(f'su --session-command="pacaur -S lightdm-webkit-theme-aether --noedit --noconfirm" {UNAME}')
     os.system("systemctl enable lightdm")
+    text = ""
+    output = ""
+    with open("/etc/lightdm/lightdm.conf", 'r') as inputfile:
+        text = inputfile.readlines()
+    for line in text:
+        if "#greeter-session=" in line:
+            output += "greeter-session=lightdm-webkit2-greeter\n"
+        else:
+            output += line
+    with open("/etc/lightdm/lightdm.conf", 'w') as outputfile:
+        outputfile.write(output)
 
 def Ly():
     # nice and easy
