@@ -12,7 +12,6 @@ echo "Set root password: "
 passwd
 groupadd netdev
 groupadd sudo
-echo "%sudo ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudog
 #user info
 echo "CREATING USER"
 echo "Username: "
@@ -25,13 +24,14 @@ passwd $UNAME
 UCODE="$(lscpu | grep "Model name:.*Intel")"
 if [ "$UCODE" ]; then UCODE="intel-ucode"; else UCODE="amd-ucode"; fi
 #install all needed packages for basic operation
-pacman -Syu --noconfirm vim devtools expac jq openssh meson fakechroot gtest $UCODE iwd git python python-pip nano man-db man-pages texinfo go grub efibootmgr base-devel --needed
+pacman -Syu --noconfirm vim sudo devtools expac jq openssh meson fakechroot gtest $UCODE iwd git python python-pip nano man-db man-pages texinfo go grub efibootmgr base-devel --needed
 systemctl enable iwd
 systemctl enable systemd-resolved
 mkdir /etc/iwd
 echo "[General]" > /etc/iwd/main.conf
 echo "EnableNetworkConfiguration=true" >> /etc/iwd/main.conf
 echo "nameserver 1.1.1.1" > /etc/resolv.conf
+echo "%sudo ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudog
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 cd ..
