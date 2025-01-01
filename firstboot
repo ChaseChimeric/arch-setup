@@ -1,6 +1,7 @@
 echo -e "\x1b[38;5;214mYou may need to enter your user's password multiple times now, press ENTER to continue\x1b[0m"
 read CONFIRM
 
+
 if [ "$(pacman -Q | grep auracle)" = "" ]; then git clone https://aur.archlinux.org/auracle-git.git && cd auracle-git && makepkg -si && cd .. ; fi
 
 if [ "$(pacman -Q | grep pacaur)" = "" ]; then git clone https://aur.archlinux.org/pacaur.git && cd pacaur && makepkg -si && cd .. ; fi

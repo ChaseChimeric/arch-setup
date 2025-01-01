@@ -44,23 +44,23 @@ def Ly():
 
 def cosmic():
     # simple group install
-    print("\x1b[38;5;214minstalling COSMIC by System76...")
+    print("\x1b[38;5;214minstalling COSMIC by System76...\x1b[0m")
     time.sleep(2)
     os.system("pacman -S cosmic --noconfirm")
     
 def xfce():
     # also pretty easy, doesn't install xorg for some reason
-    print("\x1b[38;5;214minstalling XFCE4 from Xubuntu...")
+    print("\x1b[38;5;214minstalling XFCE4 from Xubuntu...\x1b[0m")
     time.sleep(2)
     os.system(f'pacman -S xorg xorg-xwayland xfce4 xfce4-goodies --noconfirm')
 def i3():
     # same here xorg isn't initially required for some reason, also installs basic stuff to run programs
-    print('\x1b[38;5;214minstalling i3...')
+    print('\x1b[38;5;214minstalling i3...\x1b[0m')
     time.sleep(2)
     os.system(f'pacman -S xorg i3 alacritty dmenu --noconfirm')
 def sway():
     # y this so hard, probably installs the most stuff--personal configs included
-    print('\x1b[38;5;214minstalling SwayFX...')
+    print('\x1b[38;5;214minstalling SwayFX...\x1b[0m')
     time.sleep(2)
     os.system(f'su --session-command="yay -S swayfx --answerclean NotInstalled --answerdiff None" {UNAME}')
     os.system(f'pacman -S  fuzzel foot xorg xorg-xwayland --noconfirm')
