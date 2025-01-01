@@ -1,54 +1,11 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#curl https://raw.githubusercontent.com/ChaseChimeric/arch-setup/refs/heads/main/de.py > /tmp/de.py && python /tmp/de.py
-
-#User specific stuff now
-#UNAME="chasechimeric"
-#echo "makepkg -si && exit" > /tmp/makepkg
-#chmod +x /tmp/makepkg
-#chown /tmp/makepkg $UNAME:$UNAME 
-echo "You may need to enter your user's password multiple times now"
-cd ~
+echo "You may need to enter your user's password multiple times now, press ENTER to continue"
+read CONFIRM
 git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-cd ..
-rm -r yay
+cd yay && extra-x86_64-build && makepkg -i && cd .. && rm -r yay
 
 git clone https://aur.archlinux.org/auracle-git.git
-cd auracle-git
-makepkg -si
-cd ..
-rm -r auracle-git
+cd auracle-git && extra-x86_64-build && makepkg -i && cd .. && rm -r auracle-git
 
 git clone https://aur.archlinux.org/pacaur.git
-cd pacaur
-makepkg -si
-cd ..
-rm -r pacaur
+cd pacaur-git && extra-x86_64-build && makepkg -i && cd .. && rm -r pacaur-git
+
