@@ -3,5 +3,5 @@ pacman -S --noconfirm git
 git clone https://github.com/ChaseChimeric/arch-setup
 cd arch-setup
 chmod +x chrootscript
-chmod +x firstboot
+chmod +x firstboot 
 echo -e "\x1b[38;5;214mnow cd into /arch-setup and run ./chrootscript\x1b[0m"
