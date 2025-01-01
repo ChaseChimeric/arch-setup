@@ -28,6 +28,7 @@ if [ "$UCODE" ]; then UCODE="intel-ucode"; else UCODE="amd-ucode"; fi
 pacman -Syu --noconfirm vim expac jq openssh meson fakechroot gtest $UCODE iwd git python python-pip nano man-db man-pages texinfo go grub efibootmgr base-devel --needed
 systemctl enable iwd
 systemctl enable systemd-resolved
+mkdir /etc/iwd
 echo "[General]" > /etc/iwd/main.conf
 echo "EnableNetworkConfiguration=true" >> /etc/iwd/main.conf
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
