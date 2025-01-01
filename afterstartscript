@@ -1,4 +1,4 @@
-echo "You may need to enter your user's password multiple times now, press ENTER to continue"
+echo "\e[0;36mYou may need to enter your user's password multiple times now, press ENTER to continue\e[0;0m"
 read CONFIRM
 
 if [ "$(pacman -Q | grep auracle)" = "" ]; then git clone https://aur.archlinux.org/auracle-git.git && cd auracle-git && extra-x86_64-build && makepkg -i && cd .. && rm -r auracle-git; fi
