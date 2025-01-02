@@ -1,3 +1,6 @@
+echo -e "\x1b[38;5;214mYou now need to make sure that there is an internet connection"
+echo -e "iwctl will now open, if there already is an internet connection, then just 'exit'\x1b[0m"
+iwctl
 echo -e "\x1b[38;5;214mYou may need to enter your user's password multiple times now, press ENTER to continue\x1b[0m"
 read CONFIRM
 
