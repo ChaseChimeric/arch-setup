@@ -6,6 +6,7 @@
 import os
 import sys
 import time
+import random
 #environ stuff
 args = sys.argv
 UNAME=args[1]
@@ -40,6 +41,8 @@ def LightDM():
 def Ly():
     # nice and easy
     os.system("pacman -S ly --noconfirm && cp configs/ly/config.ini /etc/ly")
+    if(random.randint(0,10) == 0):
+        os.system("mv /etc/ly/config.ini.copy /etc/ly/config.ini")
     os.system("systemctl enable ly")
 
 def cosmic():
@@ -63,7 +66,7 @@ def sway():
     print('\x1b[38;5;214minstalling SwayFX...\x1b[0m')
     time.sleep(2)
     os.system(f'su --session-command="yay -S swayfx --answerclean NotInstalled --answerdiff None" {UNAME}')
-    os.system(f'pacman -S  fuzzel foot xorg xorg-xwayland waybar --noconfirm')
+    os.system(f'pacman -S  fuzzel foot xorg xorg-xwayland waybar pulseaudio pulseaudio-alsa pavucontrol --noconfirm')
     os.system(f'su --session-command="cp configs/sway/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/waybar/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/foot/ -r /home/{UNAME}/.config/" {UNAME}')
@@ -106,6 +109,7 @@ if confirm == "y":
         case default:
             exit()
     os.system("pacman -S firefox otf-firamono-nerd --noconfirm")
+    print("DE has been installed, just reboot and login")
 else:
     exit()
 
