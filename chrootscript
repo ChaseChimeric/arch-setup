@@ -25,21 +25,21 @@ UCODE="$(lscpu | grep "Model name:.*Intel")"
 if [ "$UCODE" ]; then UCODE="intel-ucode"; else UCODE="amd-ucode"; fi
 #install all needed packages for basic operation
 pacman -Syu --noconfirm vim vi sudo devtools expac jq openssh meson fakechroot gtest $UCODE iwd git python python-pip nano man-db man-pages texinfo go grub efibootmgr base-devel --needed
+
+mkdir /root/.scripts/
+cp system-init-script /root/.scripts/
+cp configs/systemd/system-init-script.service /etc/systemd/system/
+systemctl daemon-reload
 systemctl enable iwd
 systemctl enable systemd-resolved
+systemctl enable system-init-script.service
 mkdir /etc/iwd
-echo "[General]" > /etc/iwd/main.conf
-echo "EnableNetworkConfiguration=true" >> /etc/iwd/main.conf
-
-
-
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 grub-mkconfig -o /boot/grub/grub.cfg
 cd ..
 mv arch-setup /home/$UNAME/
 chown -R $UNAME /home/$UNAME/arch-setup
 echo -e "\x1b[38;5;214mnow 'exit', 'reboot' and then run /home/<user>/arch-setup/firstboot\x1b[0m"
-echo "nameserver 1.1.1.1" > /etc/resolv.conf
-echo "%sudo ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudog
+
 #END
 #

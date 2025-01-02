@@ -1,0 +1,10 @@
+[Unit]
+Description=first start script to set some things initially, should be disabled after first boot
+After=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/bash /root/.scripts/system-init-script
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

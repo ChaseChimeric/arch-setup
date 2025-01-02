@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# this script will set iwd to use dhcp
+# and enable sudo group as well as setup an initial dns
+# needed for installing yay
+# this script will do this once and then disable itself
+# should be installed to /root/.scripts/
+
+if [ ${EUID} -ne 0 ]
+then
+	exit 1 # check for root
+fi
+
+echo "[General]" > /etc/iwd/main.conf
+echo "EnableNetworkConfiguration=true" >> /etc/iwd/main.conf
+
+echo "nameserver 1.1.1.1" > /etc/resolv.conf
+echo "%sudo ALL=(ALL:ALL) ALL" > /etc/sudoers.d/sudog
+systemctl disable system-init-script.service
