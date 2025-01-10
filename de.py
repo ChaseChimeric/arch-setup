@@ -12,6 +12,18 @@ args = sys.argv
 UNAME=args[1]
 
 # install function defs
+def grubtheme():
+    os.system("git clone https://github.com/vinceliuice/Elegant-grub2-themes")
+    os.system("Elegant-grub2-themes/install.sh")
+    match random.randint(0,3):
+        case 0:
+            os.system("Elegant-grub2-themes/install.sh -b -t wave --type window")
+        case 1:
+            os.system("Elegant-grub2-themes/install.sh -b -t mojave --type window")
+        case 2:
+            os.system("Elegant-grub2-themes/install.sh -b -t forest --type window")
+        case 3:
+            os.system("Elegant-grub2-themes/install.sh -b -t mountain --type window")
 def LightDM():
     # ldm has 2 options for the greeter, but base install is simple through pacman
     print("1:\tdefault\tExtremely basic gtk based greeter")
@@ -56,11 +68,14 @@ def xfce():
     print("\x1b[38;5;214minstalling XFCE4 from Xubuntu...\x1b[0m")
     time.sleep(2)
     os.system(f'pacman -S xorg xorg-xwayland xfce4 xfce4-goodies --noconfirm')
+    os.system(f'su --session-command="pacaur -S iwgtk --noedit --noconfirm" {UNAME}')
+
 def i3():
     # same here xorg isn't initially required for some reason, also installs basic stuff to run programs
     print('\x1b[38;5;214minstalling i3...\x1b[0m')
     time.sleep(2)
     os.system(f'pacman -S xorg i3 alacritty dmenu --noconfirm')
+    os.system(f'su --session-command="pacaur -S iwgtk --noedit --noconfirm" {UNAME}')
 def sway():
     # y this so hard, probably installs the most stuff--personal configs included
     print('\x1b[38;5;214minstalling SwayFX...\x1b[0m')
@@ -70,6 +85,7 @@ def sway():
     os.system(f'su --session-command="cp configs/sway/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/waybar/ -r /home/{UNAME}/.config/" {UNAME}')
     os.system(f'su --session-command="cp configs/foot/ -r /home/{UNAME}/.config/" {UNAME}')
+    os.system(f'su --session-command="pacaur -S iwgtk --noedit --noconfirm" {UNAME}')
 
 
 
@@ -109,6 +125,7 @@ if confirm == "y":
         case default:
             exit()
     os.system("pacman -S firefox otf-firamono-nerd --noconfirm")
+    grubtheme();
     print("DE has been installed, just reboot and login")
 else:
     exit()
