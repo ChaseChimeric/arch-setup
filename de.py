@@ -24,6 +24,7 @@ def grubtheme():
             os.system("Elegant-grub2-themes/install.sh -b -t forest --type window")
         case 3:
             os.system("Elegant-grub2-themes/install.sh -b -t mountain --type window")
+    os.system("rm -r Elegant-grub2-themes")
 def LightDM():
     # ldm has 2 options for the greeter, but base install is simple through pacman
     print("1:\tdefault\tExtremely basic gtk based greeter")
