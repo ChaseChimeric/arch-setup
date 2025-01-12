@@ -14,7 +14,7 @@ UNAME=args[1]
 # install function defs
 def grubtheme():
     os.system("git clone https://github.com/vinceliuice/Elegant-grub2-themes")
-    os.system("Elegant-grub2-themes/install.sh")
+    os.system("cd Elegant-grub2-themes && git reset --hard 327118f")
     match random.randint(0,3):
         case 0:
             os.system("Elegant-grub2-themes/install.sh -b -t wave --type window")
